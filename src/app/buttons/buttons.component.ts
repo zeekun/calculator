@@ -12,10 +12,10 @@ import { addString } from '../store/buttons.actions';
 export class ButtonsComponent {
 
   //constructor(public _calculatorService:CalculatorService){}
-  
+
   constructor(private store:Store){}
 
-  onBtnPress(value:String){
+  onBtnPress(value:string){
     
     //this._calculatorService.data = value;
     this.store.dispatch(addString({value}));
