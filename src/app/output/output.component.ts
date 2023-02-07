@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
+import { CalculatorService } from '../calculator.service';
 
 @Component({
   selector: 'app-output',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./output.component.scss']
 })
 export class OutputComponent {
-  output = "0";
+  constructor(public _calculatorService:CalculatorService){}
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalculatorService } from '../calculator.service';
 
 @Component({
   selector: 'app-buttons',
@@ -6,8 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./buttons.component.scss']
 })
 export class ButtonsComponent {
-  value?:String;
+
+  constructor(public _calculatorService:CalculatorService){}
+
   onBtnPress(value:String){
-    this.value = value;
+    this._calculatorService.data = value;
   }
 }
