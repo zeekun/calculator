@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { addString } from '../store/buttons.actions';
 
 @Component({
   selector: 'app-buttons',
@@ -8,9 +11,13 @@ import { CalculatorService } from '../calculator.service';
 })
 export class ButtonsComponent {
 
-  constructor(public _calculatorService:CalculatorService){}
+  //constructor(public _calculatorService:CalculatorService){}
+  
+  constructor(private store:Store){}
 
   onBtnPress(value:String){
-    this._calculatorService.data = value;
+    
+    //this._calculatorService.data = value;
+    this.store.dispatch(addString({value}));
   }
 }
