@@ -6,16 +6,19 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { OutputComponent } from './output/output.component';
 import { StoreModule } from '@ngrx/store';
 import { buttonsReducer } from './store/buttons.reducer';
+import { AnswerComponent } from './answer/answer.component';
+import { answerReducer } from './store/answer.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonsComponent,
-    OutputComponent
+    OutputComponent,
+    AnswerComponent
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({data:buttonsReducer}),
+    StoreModule.forRoot({output:buttonsReducer,answer:answerReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

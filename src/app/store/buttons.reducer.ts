@@ -2,7 +2,7 @@ import { createReducer,on } from "@ngrx/store";
 import { addString } from "./buttons.actions";
 import { countOccurrences, hasOnlyOneType } from "../utils/utils";
 
-export const initialString = '';
+export const initialString = '0';
 
 export const buttonsReducer = createReducer(
     initialString,
@@ -62,15 +62,24 @@ export const buttonsReducer = createReducer(
                 btn = (!isNaN(num) || btn==='-' || btn==='+') ? btn : '';
             }
 
+            //make sure % only appears after a number
+            if(btn == '%'){
+                if(lastStateChar === '%' ||state.charAt(state.length-2)){
+                    state = state.slice(0,-1)
+                }
+            }
             //if last character is an operation replace it with new operation
             if(
                 lastStateChar === '/' ||
                 lastStateChar === 'x' ||
                 lastStateChar === '-' ||
-                lastStateChar === '+'
+                lastStateChar === '+' &&
+                isNaN(num)
             ){
                 state = state.slice(0,-1)
                 //btn = (btn === '/' || btn==='x') ? '' : btn;
+            }else{
+                state = state
             }
             return state+btn
         }
